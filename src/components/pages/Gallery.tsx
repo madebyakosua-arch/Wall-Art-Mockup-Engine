@@ -125,7 +125,7 @@ export const Gallery: React.FC = () => {
             </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {galleryImages.map((imgUrl, i) => (
                 <div 
                     key={i} 
@@ -167,7 +167,7 @@ export const Gallery: React.FC = () => {
 
             {/* Bottom Controls */}
             <div 
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-4 bg-slate-900/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10"
+                className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-4 bg-slate-900/80 backdrop-blur-md px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white/10"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button onClick={handleZoomOut} className="text-white hover:text-brand-400 p-2 transition-colors disabled:opacity-50" disabled={scale <= 1}>
@@ -177,7 +177,7 @@ export const Gallery: React.FC = () => {
                 <button onClick={handleZoomIn} className="text-white hover:text-brand-400 p-2 transition-colors disabled:opacity-50" disabled={scale >= 4}>
                     <ZoomIn size={20} />
                 </button>
-                <div className="w-px h-6 bg-white/20 mx-2"></div>
+                <div className="w-px h-6 bg-white/20 mx-1 sm:mx-2"></div>
                 <button onClick={handleReset} className="text-white hover:text-brand-400 p-2 transition-colors" title="Reset View">
                     <RotateCcw size={20} />
                 </button>

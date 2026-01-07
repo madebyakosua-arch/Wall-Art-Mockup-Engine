@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayCircle, Image as ImageIcon, Zap, Star, ArrowRight, Play } from 'lucide-react';
+import { PlayCircle, Upload, Image as ImageIcon, Zap, Star, ArrowRight, Play } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const Hero: React.FC = () => {
@@ -57,7 +57,7 @@ export const Hero: React.FC = () => {
 
           {/* Product Visual - The 3-Step Flow */}
           <div className="lg:w-1/2 w-full">
-            <div className="bg-white p-6 rounded-2xl shadow-2xl shadow-slate-200/50 border border-slate-200">
+            <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-2xl shadow-slate-200/50 border border-slate-200">
                 
                 {/* Heading & Subheading above the photos */}
                 <div className="mb-6 border-b border-slate-100 pb-4 text-center">
@@ -65,10 +65,10 @@ export const Hero: React.FC = () => {
                   <p className="text-sm text-slate-500 mt-1 max-w-xs mx-auto">Turn your art into stunning room photos and videos in seconds.</p>
                 </div>
 
-                <div className="flex items-center justify-between gap-2 sm:gap-4">
+                <div className="flex items-center justify-between gap-1 sm:gap-4">
                     
                     {/* 1. Upload Art (Painting) */}
-                    <div className="flex-1 flex flex-col items-center">
+                    <div className="flex-1 flex flex-col items-center min-w-0">
                         <div className="bg-slate-100 rounded-lg p-1.5 w-full aspect-[3/4] relative overflow-hidden border border-slate-200 shadow-inner">
                             <img 
                                 src={artImage} 
@@ -76,18 +76,18 @@ export const Hero: React.FC = () => {
                                 className="w-full h-full object-cover rounded border border-slate-200/50"
                             />
                         </div>
-                        <div className="mt-4 px-3 py-1.5 bg-white border border-slate-200 rounded-full shadow-sm text-xs sm:text-sm font-bold text-slate-700 whitespace-nowrap">
-                            1. Upload Art
+                        <div className="mt-3 sm:mt-4 px-2 sm:px-3 py-1 sm:py-1.5 bg-white border border-slate-200 rounded-full shadow-sm text-[10px] sm:text-sm font-bold text-slate-700 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+                            1. Upload
                         </div>
                     </div>
 
                     {/* Arrow */}
                     <div className="text-slate-300 shrink-0">
-                        <ArrowRight size={20} />
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
 
                     {/* 2. Generated (Room Mockup) */}
-                    <div className="flex-1 flex flex-col items-center">
+                    <div className="flex-1 flex flex-col items-center min-w-0">
                         <div className="bg-white rounded-lg w-full aspect-[3/4] relative overflow-hidden border border-green-100 shadow-sm flex items-center justify-center group">
                             <img 
                                 src={mockupImage} 
@@ -95,22 +95,22 @@ export const Hero: React.FC = () => {
                                 alt="Generated Mockup"
                             />
                              {/* Overlay tag */}
-                            <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-md px-2 py-1 rounded text-[9px] font-bold text-slate-800 shadow-sm border border-slate-200">
-                                mockup_01.jpg
+                            <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-md px-2 py-1 rounded text-[9px] font-bold text-slate-800 shadow-sm border border-slate-200 hidden xs:block">
+                                mockup.jpg
                             </div>
                         </div>
-                        <div className="mt-4 px-3 py-1.5 bg-green-50 border border-green-100 rounded-full shadow-sm text-xs sm:text-sm font-bold text-green-700 flex items-center gap-1 whitespace-nowrap">
-                            <ImageIcon size={12} className="hidden sm:block" /> 2. Generated
+                        <div className="mt-3 sm:mt-4 px-2 sm:px-3 py-1 sm:py-1.5 bg-green-50 border border-green-100 rounded-full shadow-sm text-[10px] sm:text-sm font-bold text-green-700 flex items-center gap-1 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+                            <ImageIcon size={12} className="hidden sm:block" /> 2. Generate
                         </div>
                     </div>
 
                     {/* Arrow */}
                     <div className="text-slate-300 shrink-0">
-                        <ArrowRight size={20} />
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
 
                     {/* 3. Video (Painting) */}
-                    <div className="flex-1 flex flex-col items-center">
+                    <div className="flex-1 flex flex-col items-center min-w-0">
                         <div className="bg-white rounded-lg w-full aspect-[3/4] relative overflow-hidden border border-purple-100 shadow-sm group cursor-pointer flex items-center justify-center">
                             {/* Frame on White Background */}
                             <div className="w-[75%] aspect-[3/4] shadow-2xl relative">
@@ -125,12 +125,12 @@ export const Hero: React.FC = () => {
                             
                             {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center bg-transparent group-hover:bg-black/5 transition-colors rounded">
-                                <div className="bg-white rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform flex items-center justify-center">
-                                    <Play className="text-red-600 fill-red-600 ml-1 w-6 h-6 sm:w-8 sm:h-8" />
+                                <div className="bg-white rounded-full p-2 sm:p-3 shadow-lg group-hover:scale-110 transition-transform flex items-center justify-center">
+                                    <Play className="text-red-600 fill-red-600 ml-0.5 w-4 h-4 sm:w-8 sm:h-8" />
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-4 px-3 py-1.5 bg-purple-50 border border-purple-100 rounded-full shadow-sm text-xs sm:text-sm font-bold text-purple-700 flex items-center gap-1 whitespace-nowrap">
+                        <div className="mt-3 sm:mt-4 px-2 sm:px-3 py-1 sm:py-1.5 bg-purple-50 border border-purple-100 rounded-full shadow-sm text-[10px] sm:text-sm font-bold text-purple-700 flex items-center gap-1 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
                             <PlayCircle size={12} className="hidden sm:block" /> 3. Video
                         </div>
                     </div>

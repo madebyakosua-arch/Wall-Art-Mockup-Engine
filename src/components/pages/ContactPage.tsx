@@ -15,7 +15,7 @@ export const ContactPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
             {/* Contact Info */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 lg:p-12">
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-8 lg:p-12">
                 <h2 className="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>
                 <p className="text-slate-600 mb-8 leading-relaxed">
                     Have a question about our pricing, features, or need a custom plan for your agency? Fill out the form and we'll get back to you as soon as possible.
@@ -62,7 +62,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 lg:p-12">
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 md:p-8 lg:p-12">
                 <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a message</h2>
                 <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); }}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

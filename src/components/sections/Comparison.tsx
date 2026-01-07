@@ -17,7 +17,7 @@ export const Comparison: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
           
           {/* WITHOUT CARD */}
-          <div className="bg-slate-50 rounded-2xl p-8 lg:p-10 border border-slate-200 relative overflow-hidden">
+          <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 lg:p-10 border border-slate-200 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-2 bg-slate-300"></div>
             
             <div className="flex items-start gap-3 mb-8 opacity-70">
@@ -69,7 +69,7 @@ export const Comparison: React.FC = () => {
           </div>
 
           {/* WITH CARD */}
-          <div className="bg-white rounded-2xl p-8 lg:p-10 border-2 border-brand-100 shadow-2xl relative overflow-hidden transform md:scale-105 z-10">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 border-2 border-brand-100 shadow-2xl relative overflow-hidden transform md:scale-105 z-10">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-500 to-purple-500"></div>
             
             <div className="flex items-center gap-3 mb-8">

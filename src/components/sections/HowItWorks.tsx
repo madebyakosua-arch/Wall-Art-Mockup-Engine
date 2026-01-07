@@ -45,7 +45,7 @@ export const HowItWorks: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="p-8 md:p-12 flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-brand-50/30">
+                  <div className="p-6 md:p-12 flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-brand-50/30">
                      <div className="text-center mb-8">
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">Upload Your Artwork</h3>
                         <p className="text-slate-500 text-sm">Transform your art into stunning mockups</p>
