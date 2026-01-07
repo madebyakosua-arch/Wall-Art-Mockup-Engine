@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CheckCircle, ArrowRight, Layout, Download } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PageView } from '../../types';
 

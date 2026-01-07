@@ -88,7 +88,7 @@ export const Pricing: React.FC = () => {
   const [isYearly, setIsYearly] = useState(true); // Default to yearly for conversion
   const [showCheckout, setShowCheckout] = useState<string | null>(null);
 
-  const handlePlanClick = (planName: string, stripeLink?: string) => {
+  const handlePlanClick = (planName: string, _stripeLink?: string) => {
     // NOTE: In production, you would uncomment the line below to go directly to Stripe
     // if (stripeLink) { window.location.href = stripeLink; return; }
     

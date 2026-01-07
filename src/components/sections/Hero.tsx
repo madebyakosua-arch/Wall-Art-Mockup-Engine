@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayCircle, Upload, Image as ImageIcon, Zap, Star, ArrowRight, Play } from 'lucide-react';
+import { PlayCircle, Image as ImageIcon, Zap, Star, ArrowRight, Play } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const Hero: React.FC = () => {

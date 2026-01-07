@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Camera, Video, Check, Sparkles, Download, Wand2, Share2, MousePointer2, X, Play, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Upload, Video, Check, Sparkles, Download, Wand2, MousePointer2, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const HowItWorks: React.FC = () => {
