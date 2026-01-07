@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { SocialProof } from './components/sections/SocialProof';
@@ -21,10 +21,23 @@ import { PrivacyPage } from './components/pages/PrivacyPage';
 import { TermsPage } from './components/pages/TermsPage';
 import { DisclaimerPage } from './components/pages/DisclaimerPage';
 import { ContactPage } from './components/pages/ContactPage';
+import { ThankYouPage } from './components/pages/ThankYouPage';
 import { PageView } from './types';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
+
+  // Handle Stripe Redirects
+  useEffect(() => {
+    // Check if the URL contains ?payment_success=true
+    const queryParams = new URLSearchParams(window.location.search);
+    if (queryParams.get('payment_success') === 'true') {
+      setCurrentPage('thank-you');
+      
+      // Optional: Clean the URL so if they refresh, it doesn't re-trigger unnecessarily
+      // window.history.replaceState({}, document.title, "/");
+    }
+  }, []);
 
   const renderContent = () => {
     switch (currentPage) {
@@ -46,6 +59,8 @@ function App() {
         return <DisclaimerPage />;
       case 'contact':
         return <ContactPage />;
+      case 'thank-you':
+        return <ThankYouPage onNavigate={setCurrentPage} />;
       default:
         return (
           <>
@@ -67,6 +82,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-brand-200 selection:text-brand-900 flex flex-col">
+      {/* Hide Navbar on Thank You page for a cleaner focus, or keep it if preferred */}
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       <main className="flex-grow">
         {renderContent()}

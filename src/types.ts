@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type PageView = 'home' | 'admin' | 'about' | 'gallery' | 'blog' | 'careers' | 'privacy' | 'terms' | 'disclaimer' | 'contact';
+export type PageView = 'home' | 'admin' | 'about' | 'gallery' | 'blog' | 'careers' | 'privacy' | 'terms' | 'disclaimer' | 'contact' | 'thank-you';
 
 export interface PricingPlan {
   name: string;
@@ -13,6 +13,7 @@ export interface PricingPlan {
   buttonText: string;
   id: string;
   isTrial?: boolean;
+  stripeLink?: string; // Optional: Place to store your real Stripe links
 }
 
 export interface FAQItem {
