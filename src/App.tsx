@@ -40,7 +40,12 @@ function App() {
       }
 
       // 2. Check Hash (Manual Navigation: #admin, #thank-you, #blog)
-      const hash = window.location.hash.replace('#', '');
+      let hash = window.location.hash.replace(/^#/, '');
+      // Handle potential trailing slash
+      if (hash.endsWith('/')) {
+        hash = hash.slice(0, -1);
+      }
+
       const validPages: PageView[] = [
         'home', 'admin', 'about', 'gallery', 'blog', 'careers', 
         'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
