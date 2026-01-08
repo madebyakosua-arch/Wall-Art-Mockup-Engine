@@ -27,17 +27,51 @@ import { PageView } from './types';
 function App() {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
 
-  // Handle Stripe Redirects
+  // Handle URL Navigation (Hash & Query Params)
   useEffect(() => {
-    // Check if the URL contains ?payment_success=true
-    const queryParams = new URLSearchParams(window.location.search);
-    if (queryParams.get('payment_success') === 'true') {
-      setCurrentPage('thank-you');
+    const handleNavigation = () => {
+      // 1. Check Query Params (Stripe Success priority)
+      const queryParams = new URLSearchParams(window.location.search);
+      if (queryParams.get('payment_success') === 'true') {
+        setCurrentPage('thank-you');
+        // Clean URL to prevent re-triggering on refresh, but keep hash if needed
+        window.history.replaceState({}, '', window.location.pathname + '#thank-you');
+        return;
+      }
+
+      // 2. Check Hash (Manual Navigation: #admin, #thank-you, #blog)
+      const hash = window.location.hash.replace('#', '');
+      const validPages: PageView[] = [
+        'home', 'admin', 'about', 'gallery', 'blog', 'careers', 
+        'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
+      ];
       
-      // Optional: Clean the URL so if they refresh, it doesn't re-trigger unnecessarily
-      // window.history.replaceState({}, document.title, "/");
-    }
+      if (validPages.includes(hash as PageView)) {
+        setCurrentPage(hash as PageView);
+      } else if (!hash) {
+        setCurrentPage('home');
+      }
+    };
+
+    // Run on mount
+    handleNavigation();
+
+    // Listen for hash changes (back/forward button support)
+    window.addEventListener('hashchange', handleNavigation);
+    return () => window.removeEventListener('hashchange', handleNavigation);
   }, []);
+
+  // Update Hash when internal navigation happens
+  const handleNavigate = (page: PageView) => {
+    setCurrentPage(page);
+    if (page === 'home') {
+       // Clear hash for home to keep URL clean
+       window.history.pushState(null, '', ' '); 
+    } else {
+       window.location.hash = page;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const renderContent = () => {
     switch (currentPage) {
@@ -60,7 +94,7 @@ function App() {
       case 'contact':
         return <ContactPage />;
       case 'thank-you':
-        return <ThankYouPage onNavigate={setCurrentPage} />;
+        return <ThankYouPage onNavigate={handleNavigate} />;
       default:
         return (
           <>
@@ -82,12 +116,19 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-brand-200 selection:text-brand-900 flex flex-col">
-      {/* Hide Navbar on Thank You page for a cleaner focus, or keep it if preferred */}
-      <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
+      {/* Hide Navbar on Thank You page for a cleaner focus */}
+      {currentPage !== 'thank-you' && (
+        <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
+      )}
+      
       <main className="flex-grow">
         {renderContent()}
       </main>
-      <Footer onNavigate={setCurrentPage} />
+      
+      {/* Hide Footer on Thank You page as well for immersive feel, or remove condition to show it */}
+      {currentPage !== 'thank-you' && (
+        <Footer onNavigate={handleNavigate} />
+      )}
     </div>
   );
 }

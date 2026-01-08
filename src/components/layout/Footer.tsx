@@ -49,6 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-2 text-sm text-slate-600">
                 <li><button onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-brand-600 transition-colors">About Us</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'blog')} className="hover:text-brand-600 transition-colors">Blog</button></li>
+                <li><button onClick={(e) => handleLinkClick(e, 'careers')} className="hover:text-brand-600 transition-colors">Careers</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-brand-600 transition-colors">Contact</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'admin')} className="hover:text-brand-600 transition-colors font-medium text-brand-600">Admin</button></li>
             </ul>
