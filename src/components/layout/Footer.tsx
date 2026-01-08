@@ -41,6 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-2 text-sm text-slate-600">
                 <li><button onClick={(e) => handleLinkClick(e, 'home', 'features')} className="hover:text-brand-600 transition-colors">Features</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'home', 'pricing')} className="hover:text-brand-600 transition-colors">Pricing</button></li>
+                <li><button onClick={(e) => handleLinkClick(e, 'gallery')} className="hover:text-brand-600 transition-colors">Gallery</button></li>
             </ul>
           </div>
 
@@ -49,9 +50,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-2 text-sm text-slate-600">
                 <li><button onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-brand-600 transition-colors">About Us</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'blog')} className="hover:text-brand-600 transition-colors">Blog</button></li>
-                <li><button onClick={(e) => handleLinkClick(e, 'careers')} className="hover:text-brand-600 transition-colors">Careers</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-brand-600 transition-colors">Contact</button></li>
-                <li><button onClick={(e) => handleLinkClick(e, 'admin')} className="hover:text-brand-600 transition-colors font-medium text-brand-600">Admin</button></li>
+                <li><button onClick={(e) => handleLinkClick(e, 'thank-you')} className="hover:text-brand-600 transition-colors text-slate-400">Success Page (Preview)</button></li>
             </ul>
           </div>
 
@@ -61,7 +61,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <li><button onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-brand-600 transition-colors">Privacy Policy</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'terms')} className="hover:text-brand-600 transition-colors">Terms of Service</button></li>
                 <li><button onClick={(e) => handleLinkClick(e, 'disclaimer')} className="hover:text-brand-600 transition-colors">Disclaimer</button></li>
-                <li><a href="mailto:support@wallartengine.com" className="hover:text-brand-600 transition-colors">Support</a></li>
             </ul>
           </div>
         </div>

@@ -31,19 +31,25 @@ function App() {
   useEffect(() => {
     const handleNavigation = () => {
       // 1. Check Query Params (Stripe Success priority)
+      // Use this URL for Stripe: https://www.wallartmockupengine.com/?payment_success=true
       const queryParams = new URLSearchParams(window.location.search);
       if (queryParams.get('payment_success') === 'true') {
         setCurrentPage('thank-you');
-        // Clean URL to prevent re-triggering on refresh, but keep hash if needed
-        window.history.replaceState({}, '', window.location.pathname + '#thank-you');
         return;
       }
 
       // 2. Check Hash (Manual Navigation: #admin, #thank-you, #blog)
+      // Get hash and strip the '#' character
       let hash = window.location.hash.replace(/^#/, '');
-      // Handle potential trailing slash
+      
+      // Robust cleaning: Handle #/thank-you, #thank-you/, or #/thank-you/
+      // Remove starting slash if present
+      if (hash.startsWith('/')) {
+        hash = hash.substring(1);
+      }
+      // Remove trailing slash if present
       if (hash.endsWith('/')) {
-        hash = hash.slice(0, -1);
+        hash = hash.substring(0, hash.length - 1);
       }
 
       const validPages: PageView[] = [
@@ -51,9 +57,11 @@ function App() {
         'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
       ];
       
+      // Check if the cleaned hash matches a valid page
       if (validPages.includes(hash as PageView)) {
         setCurrentPage(hash as PageView);
       } else if (!hash) {
+        // If no hash, default to home
         setCurrentPage('home');
       }
     };
@@ -73,6 +81,7 @@ function App() {
        // Clear hash for home to keep URL clean
        window.history.pushState(null, '', ' '); 
     } else {
+       // Set hash for bookmarking
        window.location.hash = page;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -121,19 +130,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-brand-200 selection:text-brand-900 flex flex-col">
-      {/* Hide Navbar on Thank You page for a cleaner focus */}
-      {currentPage !== 'thank-you' && (
-        <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
-      )}
+      {/* Navbar is always visible for better navigation context */}
+      <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
       
       <main className="flex-grow">
         {renderContent()}
       </main>
       
-      {/* Hide Footer on Thank You page as well for immersive feel, or remove condition to show it */}
-      {currentPage !== 'thank-you' && (
-        <Footer onNavigate={handleNavigate} />
-      )}
+      {/* Footer is always visible so links can be accessed on all pages */}
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }
