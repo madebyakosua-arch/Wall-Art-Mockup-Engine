@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CheckCircle, ArrowRight, Mail, Star, Download, Zap } from 'lucide-react';
+import { CheckCircle, ArrowRight, Mail, Star, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PageView } from '../../types';
 
