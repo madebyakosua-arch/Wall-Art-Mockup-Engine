@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type PageView = 'home' | 'admin' | 'about' | 'gallery' | 'blog' | 'careers' | 'privacy' | 'terms' | 'disclaimer' | 'contact';
+export type PageView = 'home' | 'admin' | 'about' | 'blog' | 'careers' | 'privacy' | 'terms' | 'disclaimer' | 'contact';
 
 export interface PricingPlan {
   name: string;

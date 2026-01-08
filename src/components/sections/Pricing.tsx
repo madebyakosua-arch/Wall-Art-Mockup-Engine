@@ -88,20 +88,8 @@ export const Pricing: React.FC = () => {
   const [isYearly, setIsYearly] = useState(true); // Default to yearly for conversion
   const [showCheckout, setShowCheckout] = useState<string | null>(null);
 
-  const handlePlanClick = (planName: string, _stripeLink?: string) => {
-    // NOTE: In production, you would uncomment the line below to go directly to Stripe
-    // if (stripeLink) { window.location.href = stripeLink; return; }
-    
-    // For now, we open the simulator
+  const handlePlanClick = (planName: string) => {
     setShowCheckout(planName);
-  };
-
-  const handleSimulatedPayment = () => {
-    // This simulates what happens when Stripe redirects back to:
-    // https://your-website.com/?payment_success=true
-    
-    // We manually trigger the redirect simulation
-    window.location.search = '?payment_success=true';
   };
 
   return (
@@ -209,7 +197,7 @@ export const Pricing: React.FC = () => {
               <Button 
                 variant={plan.isRecommended ? 'primary' : 'outline'} 
                 className={`w-full mb-8 ${plan.isRecommended ? 'shadow-brand-500/25 shadow-xl' : ''}`}
-                onClick={() => handlePlanClick(plan.name, plan.stripeLink)}
+                onClick={() => handlePlanClick(plan.name)}
               >
                 {plan.buttonText}
               </Button>
@@ -250,28 +238,34 @@ export const Pricing: React.FC = () => {
                     <button onClick={() => setShowCheckout(null)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>
                 </div>
                 <div className="p-6 space-y-4">
-                    <div className="bg-brand-50 text-brand-700 p-3 rounded-lg text-sm mb-4 border border-brand-100 flex items-start gap-2">
-                        <Lock size={16} className="mt-0.5 flex-shrink-0" />
-                        <div>
-                            <strong>Stripe Integration:</strong> In production, this button will redirect the user to a secure Stripe Checkout page.
-                        </div>
+                    <div className="bg-blue-50 text-blue-700 p-3 rounded-lg text-sm mb-4">
+                        This is a simulation. No payment will be processed.
                     </div>
-                    
                     <div className="space-y-2">
-                        <label className="block text-sm font-medium text-slate-700">Card Information (Simulated)</label>
+                        <label className="block text-sm font-medium text-slate-700">Card Information</label>
                         <div className="border border-slate-300 rounded-lg p-3 flex items-center bg-white">
                             <div className="w-8 h-5 bg-slate-200 rounded mr-3"></div>
                             <input type="text" placeholder="1234 4242 4242 4242" className="flex-1 outline-none text-sm" disabled />
                         </div>
                     </div>
-                    
-                    <Button className="w-full mt-4 bg-slate-900 hover:bg-slate-800" onClick={handleSimulatedPayment}>
-                        Simulate Payment & Redirect
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <label className="block text-sm font-medium text-slate-700">Expiry</label>
+                            <input type="text" placeholder="MM / YY" className="w-full border border-slate-300 rounded-lg p-3 text-sm" disabled />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="block text-sm font-medium text-slate-700">CVC</label>
+                            <input type="text" placeholder="123" className="w-full border border-slate-300 rounded-lg p-3 text-sm" disabled />
+                        </div>
+                    </div>
+                    <Button className="w-full mt-4" onClick={() => {
+                         // Simulate successful payment redirect by reloading with query param
+                        const currentUrl = new URL(window.location.href);
+                        currentUrl.searchParams.set('payment_success', 'true');
+                        window.location.href = currentUrl.toString();
+                    }}>
+                        <Lock size={16} className="mr-2" /> Pay Securely
                     </Button>
-                    <p className="text-xs text-center text-slate-400">
-                        This will redirect to the Thank You page URL: <br/>
-                        <code className="bg-slate-100 px-1 rounded">?payment_success=true</code>
-                    </p>
                 </div>
             </div>
         </div>
