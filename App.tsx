@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { SocialProof } from './components/sections/SocialProof';
@@ -19,10 +19,46 @@ import { PrivacyPage } from './components/pages/PrivacyPage';
 import { TermsPage } from './components/pages/TermsPage';
 import { DisclaimerPage } from './components/pages/DisclaimerPage';
 import { ContactPage } from './components/pages/ContactPage';
+import { ThankYouPage } from './components/pages/ThankYouPage';
 import { PageView } from './types';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
+
+  useEffect(() => {
+    const handleNavigation = () => {
+      const queryParams = new URLSearchParams(window.location.search);
+      const hash = window.location.hash.replace(/^#\/?|\/$/g, '');
+
+      const validPages: PageView[] = [
+        'home', 'admin', 'about', 'blog', 'careers',
+        'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
+      ];
+
+      if (queryParams.get('payment_success') === 'true') {
+        setCurrentPage('thank-you');
+        window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+      } else if (hash && validPages.includes(hash as PageView)) {
+        setCurrentPage(hash as PageView);
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    handleNavigation();
+    window.addEventListener('hashchange', handleNavigation);
+    return () => window.removeEventListener('hashchange', handleNavigation);
+  }, []);
+
+  const handleNavigate = (page: PageView) => {
+    setCurrentPage(page);
+    if (page === 'home') {
+       window.history.pushState(null, '', ' '); 
+    } else {
+       window.location.hash = page;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const renderContent = () => {
     switch (currentPage) {
@@ -42,6 +78,8 @@ function App() {
         return <DisclaimerPage />;
       case 'contact':
         return <ContactPage />;
+      case 'thank-you':
+        return <ThankYouPage onNavigate={handleNavigate} />;
       default:
         return (
           <>
@@ -62,11 +100,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-brand-200 selection:text-brand-900 flex flex-col">
-      <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
+      <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
       <main className="flex-grow">
         {renderContent()}
       </main>
-      <Footer onNavigate={setCurrentPage} />
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }
