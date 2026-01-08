@@ -20,6 +20,7 @@ import { TermsPage } from './components/pages/TermsPage';
 import { DisclaimerPage } from './components/pages/DisclaimerPage';
 import { ContactPage } from './components/pages/ContactPage';
 import { ThankYouPage } from './components/pages/ThankYouPage';
+import { Gallery } from './components/pages/Gallery';
 import { PageView } from './types';
 
 function App() {
@@ -28,38 +29,26 @@ function App() {
   // Handle URL Navigation (Hash & Query Params)
   useEffect(() => {
     const handleNavigation = () => {
-      // 1. Check Query Params (Stripe Success priority)
-      // Use this URL for Stripe: https://www.wallartmockupengine.com/?payment_success=true
       const queryParams = new URLSearchParams(window.location.search);
-      if (queryParams.get('payment_success') === 'true') {
-        setCurrentPage('thank-you');
-        return;
-      }
-
-      // 2. Check Hash (Manual Navigation: #admin, #thank-you, #blog)
-      // Get hash and strip the '#' character
-      let hash = window.location.hash.replace(/^#/, '');
-      
-      // Robust cleaning: Handle #/thank-you, #thank-you/, or #/thank-you/
-      // Remove starting slash if present
-      if (hash.startsWith('/')) {
-        hash = hash.substring(1);
-      }
-      // Remove trailing slash if present
-      if (hash.endsWith('/')) {
-        hash = hash.substring(0, hash.length - 1);
-      }
+      const hash = window.location.hash.replace(/^#\/?|\/$/g, ''); // Clean hash
 
       const validPages: PageView[] = [
-        'home', 'admin', 'about', 'gallery', 'blog', 'careers', 
+        'home', 'admin', 'about', 'gallery', 'blog', 'careers',
         'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
       ];
-      
-      // Check if the cleaned hash matches a valid page
-      if (validPages.includes(hash as PageView)) {
+
+      // Priority 1: Check for payment success
+      if (queryParams.get('payment_success') === 'true') {
+        setCurrentPage('thank-you');
+        // Clean the URL to prevent re-showing the thank you page on refresh
+        window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+      } 
+      // Priority 2: Check for a valid hash for navigation
+      else if (hash && validPages.includes(hash as PageView)) {
         setCurrentPage(hash as PageView);
-      } else if (!hash) {
-        // If no hash, default to home
+      } 
+      // Default to home page
+      else {
         setCurrentPage('home');
       }
     };
@@ -67,7 +56,7 @@ function App() {
     // Run on mount
     handleNavigation();
 
-    // Listen for hash changes (back/forward button support)
+    // Listen for hash changes for SPA navigation
     window.addEventListener('hashchange', handleNavigation);
     return () => window.removeEventListener('hashchange', handleNavigation);
   }, []);
@@ -79,7 +68,7 @@ function App() {
        // Clear hash for home to keep URL clean
        window.history.pushState(null, '', ' '); 
     } else {
-       // Set hash for bookmarking
+       // Set hash for bookmarking and SPA navigation
        window.location.hash = page;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,6 +80,8 @@ function App() {
         return <AdminDashboard />;
       case 'about':
         return <AboutUs />;
+      case 'gallery':
+        return <Gallery />;
       case 'blog':
         return <BlogPage />;
       case 'careers':
