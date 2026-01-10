@@ -2,7 +2,7 @@ import React from 'react';
 
 export const BeforeAfter: React.FC = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="video-demo" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
            <h2 className="text-3xl font-bold text-slate-900 mb-4">See How It Works</h2>

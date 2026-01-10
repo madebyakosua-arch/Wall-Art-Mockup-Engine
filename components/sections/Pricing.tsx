@@ -74,9 +74,6 @@ const plans: PricingPlan[] = [
       "Unlimited custom presets",
       "Advanced team collaboration",
       "Batch processing (unlimited)",
-      "API access for automation",
-      "White-label options",
-      "Dedicated account manager",
       "24/7 VIP support"
     ],
     buttonText: "Start Agency Plan"

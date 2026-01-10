@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
         
         <div className="border-t border-slate-100 pt-8 text-center text-sm text-slate-400">
-            © 2025. Wall Art Mockup Engine by Made by Akosua. All rights reserved.
+            © 2025. Wall Art Mockup Engine by Made by Stephanie. All rights reserved.
         </div>
       </div>
     </footer>

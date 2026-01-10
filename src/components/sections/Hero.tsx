@@ -6,6 +6,10 @@ export const Hero: React.FC = () => {
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
+  
+  const scrollToVideo = () => {
+    document.getElementById('video-demo')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   // 1. UPDATED ART IMAGE (User Provided Previously)
   const artImage = "https://i.ibb.co/Gfh1dSyh/flat-art-jpg.png";
@@ -42,7 +46,7 @@ export const Hero: React.FC = () => {
               <Button onClick={scrollToPricing} size="lg" className="w-full sm:w-auto shadow-xl shadow-brand-500/20 text-lg px-8 py-4">
                 Get Started
               </Button>
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto group">
+              <Button onClick={scrollToVideo} variant="secondary" size="lg" className="w-full sm:w-auto group">
                 <PlayCircle className="mr-2 h-5 w-5 text-brand-600 group-hover:scale-110 transition-transform" />
                 See How It Works
               </Button>

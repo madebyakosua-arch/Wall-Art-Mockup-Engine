@@ -3,6 +3,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { SocialProof } from './components/sections/SocialProof';
 import { Benefits } from './components/sections/Benefits';
+import { FounderStory } from './components/sections/FounderStory';
 import { HowItWorks } from './components/sections/HowItWorks';
 import { BeforeAfter } from './components/sections/BeforeAfter';
 import { UseCases } from './components/sections/UseCases';
@@ -102,6 +103,7 @@ function App() {
             <Hero />
             <SocialProof />
             <Benefits />
+            <FounderStory />
             <HowItWorks />
             <BeforeAfter />
             <UseCases />

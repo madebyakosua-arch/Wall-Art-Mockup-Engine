@@ -21,7 +21,7 @@ export const AboutUs: React.FC = () => {
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Story</h2>
             <div className="prose prose-lg text-slate-600">
                 <p className="mb-6">
-                    Wall Art Mockup Engine was founded by Akosua in 2024. As a digital artist herself, Akosua struggled to find high-quality, realistic mockups that didn't require hours of Photoshop work. The existing tools were clunky, expensive, or produced low-resolution images that didn't do justice to the artwork.
+                    Wall Art Mockup Engine was founded by Stephanie in 2024. As a digital artist herself, Stephanie struggled to find high-quality, realistic mockups that didn't require hours of Photoshop work. The existing tools were clunky, expensive, or produced low-resolution images that didn't do justice to the artwork.
                 </p>
                 <p className="mb-6">
                     Determined to solve this problem for the creative community, she gathered a small team of engineers and 3D artists to build a platform that automates the mockup process without sacrificing quality.

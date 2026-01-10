@@ -28,8 +28,8 @@ export const ContactPage: React.FC = () => {
                         </div>
                         <div className="ml-4">
                             <h3 className="text-lg font-bold text-slate-900">Email</h3>
-                            <a href="mailto:hello@madebyakosua.com" className="text-brand-600 hover:underline text-lg">
-                                hello@madebyakosua.com
+                            <a href="mailto:hello@madebystephanie.com" className="text-brand-600 hover:underline text-lg">
+                                hello@madebystephanie.com
                             </a>
                         </div>
                     </div>
