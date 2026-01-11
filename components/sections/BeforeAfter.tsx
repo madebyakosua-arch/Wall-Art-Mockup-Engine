@@ -6,7 +6,7 @@ export const BeforeAfter: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
            <h2 className="text-3xl font-bold text-slate-900 mb-4">See How It Works</h2>
-           <p className="text-lg text-slate-600">Watch our 60-second walkthrough to see how fast you can create assets.</p>
+           <p className="text-lg text-slate-600">Watch our 21 minutes walkthrough to see how fast you can create assets.</p>
         </div>
 
         <div className="max-w-4xl mx-auto relative rounded-2xl shadow-2xl overflow-hidden border-4 border-slate-100 bg-slate-900">
