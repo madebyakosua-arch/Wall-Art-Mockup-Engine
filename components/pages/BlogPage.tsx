@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, User, ArrowRight, Clock, Mail, Star } from 'lucide-react';
+import { Calendar, User, ArrowRight, Clock, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const BlogPage: React.FC = () => {
@@ -8,7 +8,7 @@ export const BlogPage: React.FC = () => {
     excerpt: "Learn why visual presentation is the #1 factor in conversion rates for wall art sellers. We analyzed over 5,000 shops to bring you this data-driven guide.",
     date: "Oct 12, 2024",
     readTime: "8 min read",
-    author: "Stephanie",
+    author: "Akosua",
     image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=1200",
     category: "Selling Tips"
   };
@@ -37,28 +37,11 @@ export const BlogPage: React.FC = () => {
       excerpt: "Mockups get the click, but SEO gets the view. Here is how to optimize your listings.",
       date: "Sep 02, 2024",
       readTime: "12 min read",
-      author: "Stephanie",
+      author: "Akosua",
       image: "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&q=80&w=800",
       category: "Marketing"
     }
   ];
-
-  const StarIcon = ({ className }: { className?: string }) => (
-    <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        width="24" 
-        height="24" 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        className={className}
-    >
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
-  );
 
   return (
     <div className="pt-24 pb-20 bg-slate-50 min-h-screen">
@@ -187,3 +170,21 @@ export const BlogPage: React.FC = () => {
     </div>
   );
 };
+
+// Helper Icon
+const StarIcon = ({ className }: { className?: string }) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className={className}
+    >
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+);

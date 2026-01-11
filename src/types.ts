@@ -13,7 +13,8 @@ export interface PricingPlan {
   buttonText: string;
   id: string;
   isTrial?: boolean;
-  stripeLink?: string; // Optional: Place to store your real Stripe links
+  stripeLinkMonthly?: string;
+  stripeLinkYearly?: string;
 }
 
 export interface FAQItem {

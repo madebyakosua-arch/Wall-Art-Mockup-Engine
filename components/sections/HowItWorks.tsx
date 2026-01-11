@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Camera, Video, Check, Sparkles, Download, Wand2, Share2, MousePointer2, X, Play, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Upload, Video, Check, Sparkles, Download, Wand2, MousePointer2, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const HowItWorks: React.FC = () => {
@@ -19,7 +19,7 @@ export const HowItWorks: React.FC = () => {
             <Wand2 size={14} className="mr-2" />
             Simple 4-Step Process
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             From upload to download <br className="hidden md:block" /> in under 60 seconds.
           </h2>
           <p className="text-lg text-slate-600">
@@ -45,7 +45,7 @@ export const HowItWorks: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="p-8 md:p-12 flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-brand-50/30">
+                  <div className="p-6 md:p-12 flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-brand-50/30">
                      <div className="text-center mb-8">
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">Upload Your Artwork</h3>
                         <p className="text-slate-500 text-sm">Transform your art into stunning mockups</p>

@@ -20,7 +20,8 @@ const plans: PricingPlan[] = [
       "Community support"
     ],
     buttonText: "Start Basic Plan",
-    // stripeLink: "https://buy.stripe.com/your-basic-link-id" 
+    stripeLinkMonthly: "https://buy.stripe.com/8x228rb2p8vGfqT05VcAo07",
+    stripeLinkYearly: "https://buy.stripe.com/5kQ00j9YldQ06Un8CrcAo0b",
   },
   {
     id: "starter",
@@ -37,7 +38,9 @@ const plans: PricingPlan[] = [
       "Access to all mockup styles",
       "Basic customer support"
     ],
-    buttonText: "Start Starter Plan"
+    buttonText: "Start Starter Plan",
+    stripeLinkMonthly: "https://buy.stripe.com/8x2dR94E15juguX6ujcAo08",
+    stripeLinkYearly: "https://buy.stripe.com/fZu3cvdax13e7YraKzcAo0c",
   },
   {
     id: "creator",
@@ -57,7 +60,9 @@ const plans: PricingPlan[] = [
       "Priority customer support",
       "Early access to new features"
     ],
-    buttonText: "Start Creator Plan"
+    buttonText: "Start Creator Plan",
+    stripeLinkMonthly: "https://buy.stripe.com/9B69AT2vTdQ0ceHf0PcAo09",
+    stripeLinkYearly: "https://buy.stripe.com/28E00j8Uh8vG92vdWLcAo0d",
   },
   {
     id: "agency",
@@ -77,16 +82,24 @@ const plans: PricingPlan[] = [
       "Batch processing (unlimited)",
       "24/7 VIP support"
     ],
-    buttonText: "Start Agency Plan"
+    buttonText: "Start Agency Plan",
+    stripeLinkMonthly: "https://buy.stripe.com/aFa9AT9Ylh2cfqTf0PcAo0a",
+    stripeLinkYearly: "https://buy.stripe.com/eVq3cv4E15jufqT6ujcAo0e",
   }
 ];
 
 export const Pricing: React.FC = () => {
   const [isYearly, setIsYearly] = useState(true); // Default to yearly for conversion
-  const [showCheckout, setShowCheckout] = useState<string | null>(null);
 
-  const handlePlanClick = (planName: string) => {
-    setShowCheckout(planName);
+  const handlePlanClick = (monthlyLink?: string, yearlyLink?: string) => {
+    const targetLink = isYearly ? yearlyLink : monthlyLink;
+    if (targetLink) {
+      window.location.href = targetLink;
+    } else {
+      // Fallback for safety, though it shouldn't be reached with configured links
+      alert("Payment link is not configured for this plan.");
+      console.error("No payment link configured for this plan/option.");
+    }
   };
 
   return (
@@ -194,7 +207,7 @@ export const Pricing: React.FC = () => {
               <Button 
                 variant={plan.isRecommended ? 'primary' : 'outline'} 
                 className={`w-full mb-8 ${plan.isRecommended ? 'shadow-brand-500/25 shadow-xl' : ''}`}
-                onClick={() => handlePlanClick(plan.name)}
+                onClick={() => handlePlanClick(plan.stripeLinkMonthly, plan.stripeLinkYearly)}
               >
                 {plan.buttonText}
               </Button>
@@ -223,50 +236,6 @@ export const Pricing: React.FC = () => {
           )})}
         </div>
       </div>
-
-      {/* Checkout Modal Simulation */}
-      {showCheckout && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
-                <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                    <h3 className="text-lg font-bold text-slate-900">
-                        {`Checkout - ${showCheckout} Plan`}
-                    </h3>
-                    <button onClick={() => setShowCheckout(null)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>
-                </div>
-                <div className="p-6 space-y-4">
-                    <div className="bg-blue-50 text-blue-700 p-3 rounded-lg text-sm mb-4">
-                        This is a simulation. No payment will be processed.
-                    </div>
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-slate-700">Card Information</label>
-                        <div className="border border-slate-300 rounded-lg p-3 flex items-center bg-white">
-                            <div className="w-8 h-5 bg-slate-200 rounded mr-3"></div>
-                            <input type="text" placeholder="1234 4242 4242 4242" className="flex-1 outline-none text-sm" disabled />
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-slate-700">Expiry</label>
-                            <input type="text" placeholder="MM / YY" className="w-full border border-slate-300 rounded-lg p-3 text-sm" disabled />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-slate-700">CVC</label>
-                            <input type="text" placeholder="123" className="w-full border border-slate-300 rounded-lg p-3 text-sm" disabled />
-                        </div>
-                    </div>
-                    <Button className="w-full mt-4" onClick={() => {
-                         // Simulate successful payment redirect by reloading with query param
-                        const currentUrl = new URL(window.location.href);
-                        currentUrl.searchParams.set('payment_success', 'true');
-                        window.location.href = currentUrl.toString();
-                    }}>
-                        <Lock size={16} className="mr-2" /> Pay Securely
-                    </Button>
-                </div>
-            </div>
-        </div>
-      )}
     </section>
   );
 };

@@ -33,7 +33,7 @@ const comparisonData = [
     wame: 'Advanced frame options, texture mapping',
     placeit: 'Basic color changes only',
     canva: 'Limited to pre-set frame styles',
-  },
+  }
 ];
 
 export const Comparison: React.FC = () => {
@@ -49,50 +49,66 @@ export const Comparison: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-          <div className="grid grid-cols-4 text-sm sm:text-base">
+        {/* Mobile View - Card-based layout */}
+        <div className="md:hidden space-y-6">
+            {comparisonData.map((item, index) => (
+                <div key={index} className="bg-white rounded-xl shadow border border-slate-200/50 p-4">
+                    <h4 className="font-bold text-slate-800 mb-4 text-center border-b border-slate-100 pb-3">{item.feature}</h4>
+                    <div className="space-y-4 text-sm">
+                        <div className="p-3 rounded-lg bg-brand-50/50">
+                            <p className="font-bold text-brand-800 flex items-center gap-2 mb-1">
+                                <Star size={14} className="fill-brand-500 text-brand-500"/> Wall Art Mockup Engine
+                            </p>
+                            <p className="text-slate-700">{item.wame}</p>
+                        </div>
+                        <div className="p-3 rounded-lg bg-slate-50">
+                            <p className="font-bold text-slate-600 mb-1">Placeit</p>
+                            <p className="text-slate-500">{item.placeit}</p>
+                        </div>
+                        <div className="p-3 rounded-lg bg-slate-50">
+                            <p className="font-bold text-slate-600 mb-1">Canva Mockups</p>
+                            <p className="text-slate-500">{item.canva}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        {/* Desktop View - Table layout */}
+        <div className="hidden md:block bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+          <div className="grid grid-cols-4 text-sm">
             {/* Header Row */}
-            <div className="p-4 sm:p-6 font-bold text-slate-600 bg-slate-50 border-b border-r border-slate-200 hidden md:flex items-center">Feature</div>
-            <div className="col-span-4 md:col-span-1 p-4 sm:p-6 font-bold text-slate-900 bg-brand-50 border-b border-brand-200 text-center flex flex-col items-center justify-center ring-2 ring-inset ring-brand-200">
-                <span className="flex items-center gap-2 text-base sm:text-lg text-brand-700">
+            <div className="p-6 font-bold text-slate-600 bg-slate-50/70 border-b border-slate-200 flex items-center">Feature</div>
+            <div className="p-6 font-bold bg-brand-50/70 border-b border-brand-200 text-center flex items-center justify-center ring-1 ring-inset ring-brand-200">
+                <span className="flex items-center gap-2 text-brand-700">
                     <Star size={16} className="fill-brand-500 text-brand-500" />
                     Wall Art Mockup Engine
                 </span>
             </div>
-            <div className="col-span-2 md:col-span-1 p-4 sm:p-6 font-bold text-slate-600 bg-slate-50 border-b border-slate-200 text-center flex items-center justify-center">Placeit</div>
-            <div className="col-span-2 md:col-span-1 p-4 sm:p-6 font-bold text-slate-600 bg-slate-50 border-b border-l border-slate-200 text-center flex items-center justify-center">Canva Mockups</div>
+            <div className="p-6 font-bold text-slate-600 bg-slate-50/70 border-b border-slate-200 text-center flex items-center justify-center">Placeit</div>
+            <div className="p-6 font-bold text-slate-600 bg-slate-50/70 border-b border-slate-200 text-center flex items-center justify-center">Canva Mockups</div>
+            
+            {/* Data Rows */}
+            {comparisonData.map((item, index) => (
+              <React.Fragment key={index}>
+                <div className={`p-4 font-semibold text-slate-800 flex items-center border-r border-slate-100 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50/30'}`}>
+                  {item.feature}
+                </div>
+                <div className={`p-4 text-center flex flex-col items-center justify-center bg-green-50/20 ring-1 ring-inset ring-brand-200 ${index % 2 === 0 ? 'bg-white' : 'bg-green-50/20'}`}>
+                  <Check className="w-5 h-5 text-green-600 mb-1 flex-shrink-0" />
+                  <p className="text-slate-700 leading-relaxed">{item.wame}</p>
+                </div>
+                <div className={`p-4 text-center flex flex-col items-center justify-center border-r border-slate-100 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50/30'}`}>
+                  <X className="w-5 h-5 text-red-400 mb-1 flex-shrink-0" />
+                  <p className="text-slate-500 leading-relaxed">{item.placeit}</p>
+                </div>
+                <div className={`p-4 text-center flex flex-col items-center justify-center ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50/30'}`}>
+                  <X className="w-5 h-5 text-red-400 mb-1 flex-shrink-0" />
+                  <p className="text-slate-500 leading-relaxed">{item.canva}</p>
+                </div>
+              </React.Fragment>
+            ))}
           </div>
-
-          {comparisonData.map((item, index) => (
-            <div key={index} className="grid grid-cols-4 items-stretch border-b border-slate-100 last:border-b-0 text-sm">
-              {/* Feature Name (Left Column) */}
-              <div className="p-4 sm:p-6 font-semibold text-slate-800 bg-slate-50/50 flex items-center border-r border-slate-100">
-                <span className="md:hidden font-bold block mb-2 text-xs uppercase text-slate-400">Feature</span>
-                {item.feature}
-              </div>
-
-              {/* WAME Column */}
-              <div className="col-span-3 md:col-span-1 p-4 sm:p-6 text-center flex flex-col items-center justify-center bg-green-50/30">
-                 <span className="md:hidden font-bold block mb-2 text-xs uppercase text-brand-600">Our Engine</span>
-                <Check className="w-6 h-6 text-green-600 mb-2 flex-shrink-0" />
-                <p className="text-slate-700 leading-relaxed">{item.wame}</p>
-              </div>
-
-              {/* Placeit Column */}
-              <div className="col-span-3 sm:col-auto md:col-span-1 p-4 sm:p-6 text-center flex flex-col items-center justify-center border-t md:border-t-0 border-l-0 sm:border-l md:border-l-0 border-slate-100">
-                <span className="md:hidden font-bold block mb-2 text-xs uppercase text-slate-400">Placeit</span>
-                <X className="w-6 h-6 text-red-400 mb-2 flex-shrink-0" />
-                <p className="text-slate-500 leading-relaxed">{item.placeit}</p>
-              </div>
-
-              {/* Canva Column */}
-              <div className="col-span-3 sm:col-auto md:col-span-1 p-4 sm:p-6 text-center flex flex-col items-center justify-center border-t md:border-t-0 border-l-0 sm:border-l border-slate-100">
-                <span className="md:hidden font-bold block mb-2 text-xs uppercase text-slate-400">Canva</span>
-                <X className="w-6 h-6 text-red-400 mb-2 flex-shrink-0" />
-                <p className="text-slate-500 leading-relaxed">{item.canva}</p>
-              </div>
-            </div>
-          ))}
         </div>
 
         <div className="mt-12 text-center">

@@ -81,7 +81,7 @@ export const ThankYouPage: React.FC<ThankYouPageProps> = ({ onNavigate }) => {
 
             <div className="mt-6 pt-6 border-t border-slate-100 text-xs text-slate-500 text-center">
               <p className="mb-2">
-                Need help? Contact us at <a href="mailto:hello@madebystephanie.com" className="text-brand-600 font-medium hover:underline">hello@madebystephanie.com</a>.
+                Need help? Contact us at <a href="mailto:hello@madebyakosua.com" className="text-brand-600 font-medium hover:underline">hello@madebyakosua.com</a>.
               </p>
               <p className="mb-2">We aim to respond within 24-48 hours.</p>
               <p>You can cancel your subscription at any time from your dashboard.</p>

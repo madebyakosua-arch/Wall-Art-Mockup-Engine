@@ -15,7 +15,7 @@ export const BeforeAfter: React.FC = () => {
                 <iframe 
                     width="100%" 
                     height="100%" 
-                    src="https://www.youtube.com/embed/L_LUpnjgPso?autoplay=0&mute=1&controls=1&showinfo=0&rel=0" 
+                    src="https://www.youtube.com/embed/IjbnR2cT7Es?autoplay=0&mute=1&controls=1&showinfo=0&rel=0" 
                     title="Wall Art Mockup Engine Demo" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

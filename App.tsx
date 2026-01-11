@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { SocialProof } from './components/sections/SocialProof';
@@ -21,41 +21,55 @@ import { TermsPage } from './components/pages/TermsPage';
 import { DisclaimerPage } from './components/pages/DisclaimerPage';
 import { ContactPage } from './components/pages/ContactPage';
 import { ThankYouPage } from './components/pages/ThankYouPage';
+import { Gallery } from './components/pages/Gallery';
 import { PageView } from './types';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
 
+  // Handle URL Navigation (Hash & Query Params)
   useEffect(() => {
     const handleNavigation = () => {
       const queryParams = new URLSearchParams(window.location.search);
-      const hash = window.location.hash.replace(/^#\/?|\/$/g, '');
+      const hash = window.location.hash.replace(/^#\/?|\/$/g, ''); // Clean hash
 
       const validPages: PageView[] = [
-        'home', 'admin', 'about', 'blog', 'careers',
+        'home', 'admin', 'about', 'gallery', 'blog', 'careers',
         'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
       ];
 
+      // Priority 1: Check for payment success
       if (queryParams.get('payment_success') === 'true') {
         setCurrentPage('thank-you');
+        // Clean the URL to prevent re-showing the thank you page on refresh
         window.history.replaceState(null, '', window.location.pathname + window.location.hash);
-      } else if (hash && validPages.includes(hash as PageView)) {
+      } 
+      // Priority 2: Check for a valid hash for navigation
+      else if (hash && validPages.includes(hash as PageView)) {
         setCurrentPage(hash as PageView);
-      } else {
+      } 
+      // Default to home page
+      else {
         setCurrentPage('home');
       }
     };
 
+    // Run on mount
     handleNavigation();
+
+    // Listen for hash changes for SPA navigation
     window.addEventListener('hashchange', handleNavigation);
     return () => window.removeEventListener('hashchange', handleNavigation);
   }, []);
 
+  // Update Hash when internal navigation happens
   const handleNavigate = (page: PageView) => {
     setCurrentPage(page);
     if (page === 'home') {
+       // Clear hash for home to keep URL clean
        window.history.pushState(null, '', ' '); 
     } else {
+       // Set hash for bookmarking and SPA navigation
        window.location.hash = page;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -67,6 +81,8 @@ function App() {
         return <AdminDashboard />;
       case 'about':
         return <AboutUs />;
+      case 'gallery':
+        return <Gallery />;
       case 'blog':
         return <BlogPage />;
       case 'careers':
@@ -102,10 +118,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-brand-200 selection:text-brand-900 flex flex-col">
+      {/* Navbar is always visible for better navigation context */}
       <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
+      
       <main className="flex-grow">
         {renderContent()}
       </main>
+      
+      {/* Footer is always visible so links can be accessed on all pages */}
       <Footer onNavigate={handleNavigate} />
     </div>
   );

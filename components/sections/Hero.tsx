@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayCircle, Upload, Image as ImageIcon, Zap, Star, ArrowRight, Play } from 'lucide-react';
+import { PlayCircle, Image as ImageIcon, Zap, Star, ArrowRight, Play } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const Hero: React.FC = () => {
@@ -33,7 +33,7 @@ export const Hero: React.FC = () => {
               Launch Special: 25% OFF Annual Plans
             </div>
             
-            <h1 className="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
               Stop losing sales. <br/>
               Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">bestselling mockups</span> in seconds.
             </h1>

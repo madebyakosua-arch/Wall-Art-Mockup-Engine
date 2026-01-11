@@ -5,7 +5,7 @@ export const PrivacyPage: React.FC = () => {
     <div className="pt-24 pb-20 bg-slate-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-12 rounded-xl shadow-sm border border-slate-200">
         <h1 className="text-3xl font-bold text-slate-900 mb-2">Privacy Policy</h1>
-        <p className="text-slate-500 mb-8">Effective Date: October 24, 2025</p>
+        <p className="text-slate-500 mb-8">Effective Date: January 7, 2026</p>
         
         <div className="prose prose-slate max-w-none text-slate-700">
             <p className="mb-6">
