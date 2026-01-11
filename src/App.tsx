@@ -96,7 +96,7 @@ function App() {
       case 'contact':
         return <ContactPage />;
       case 'thank-you':
-        return <ThankYouPage onNavigate={handleNavigate} />;
+        return <ThankYouPage />;
       default:
         return (
           <>

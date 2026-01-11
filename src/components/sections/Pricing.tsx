@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, X, Zap, Clock, Lock } from 'lucide-react';
+import { Check, Zap, Clock } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PricingPlan } from '../../types';
 

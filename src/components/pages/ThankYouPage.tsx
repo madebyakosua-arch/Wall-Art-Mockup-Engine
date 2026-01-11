@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
-import { CheckCircle, ArrowRight, Mail, Star, Zap } from 'lucide-react';
+import { CheckCircle, ArrowRight, Mail, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PageView } from '../../types';
 
-interface ThankYouPageProps {
-  onNavigate: (page: PageView) => void;
-}
-
-export const ThankYouPage: React.FC<ThankYouPageProps> = ({ onNavigate }) => {
+export const ThankYouPage: React.FC = () => {
   
   useEffect(() => {
     window.scrollTo(0, 0);
