@@ -33,22 +33,21 @@ function App() {
       const queryParams = new URLSearchParams(window.location.search);
       const hash = window.location.hash.replace(/^#\/?|\/$/g, ''); // Clean hash
 
+      // If payment is successful, redirect to the canonical #thank-you URL.
+      // This makes the URL stable and bookmarkable.
+      if (queryParams.get('payment_success') === 'true') {
+        window.location.href = window.location.pathname + '#thank-you';
+        return; // Stop processing to allow the redirect to happen
+      }
+
       const validPages: PageView[] = [
         'home', 'admin', 'about', 'gallery', 'blog', 'careers',
         'privacy', 'terms', 'disclaimer', 'contact', 'thank-you'
       ];
-
-      // Priority 1: Check for payment success
-      if (queryParams.get('payment_success') === 'true') {
-        setCurrentPage('thank-you');
-        // Clean the URL to prevent re-showing the thank you page on refresh
-        window.history.replaceState(null, '', window.location.pathname + window.location.hash);
-      } 
-      // Priority 2: Check for a valid hash for navigation
-      else if (hash && validPages.includes(hash as PageView)) {
+      
+      if (hash && validPages.includes(hash as PageView)) {
         setCurrentPage(hash as PageView);
       } 
-      // Default to home page
       else {
         setCurrentPage('home');
       }
@@ -67,7 +66,7 @@ function App() {
     setCurrentPage(page);
     if (page === 'home') {
        // Clear hash for home to keep URL clean
-       window.history.pushState(null, '', ' '); 
+       window.history.pushState(null, '', window.location.pathname); 
     } else {
        // Set hash for bookmarking and SPA navigation
        window.location.hash = page;
