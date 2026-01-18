@@ -21,7 +21,7 @@ export const FounderStory: React.FC = () => {
                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                <div className="absolute bottom-4 left-4 text-white">
                   <p className="font-bold text-lg">Stephanie</p>
-                  <p className="text-xs">Founder & Artist</p>
+                  <p className="text-xs">Founder & Creator</p>
                </div>
             </div>
           </div>
@@ -34,18 +34,18 @@ export const FounderStory: React.FC = () => {
             </div>
             
             <h2 className="text-3xl font-bold text-slate-900 mb-6 tracking-tight">
-              I spent more time making mockups than making art.
+              I spent more time making mockups than creating.
             </h2>
             
             <div className="prose prose-lg text-slate-600 max-w-none">
               <p>
-                As an artist selling on Etsy, I was caught in a frustrating cycle. Each new piece of art meant hours of tedious work: upscaling the digital file, battling with Photoshop templates, and trying to make my art look good in generic room photos. It was exhausting, and it was stealing time away from what I actually love doing—creating.
+                As a digital creator selling online, I was caught in a frustrating cycle. Each new design meant hours of tedious work: battling with Photoshop mockup templates, canva mockup templates and trying to find good stock photos, and struggling to make my work look realistic in a room. It was exhausting, and it was stealing time away from what I actually love doing—creating.
               </p>
               <p>
-                I knew there had to be a better way. I imagined a tool that was smart, fast, and created visuals so realistic they'd stop customers in their tracks. So, I decided to build it.
+                I knew there had to be a better way. I imagined a tool that was smart, fast, and created realistic mockup visuals so realistic they'd stop customers in their tracks. So, I decided to build it.
               </p>
               <p>
-                Wall Art Mockup Engine is the tool I wish I had. It’s built for artists, by an artist, with the simple goal of giving you back your time and helping you sell more art.
+                Wall Art Mockup Engine is the tool I wish I had. It’s built for creators, by a creator, with the simple goal of giving you back your time and helping you sell more of your work.
               </p>
             </div>
 
