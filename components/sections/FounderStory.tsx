@@ -39,13 +39,13 @@ export const FounderStory: React.FC = () => {
             
             <div className="prose prose-lg text-slate-600 max-w-none">
               <p>
-                As a digital creator selling online, I was caught in a frustrating cycle. Each new design meant hours of tedious work: battling with Photoshop mockup templates, canva mockup templates and trying to find good stock photos, and struggling to make my work look realistic in a room. It was exhausting, and it was stealing time away from what I actually love doing—creating.
+                As a digital creator who shares and offers my artwork online, I found myself stuck in a frustrating loop. Every new piece of artwork led to hours of tedious work: wrestling with Photoshop mockup templates, trying different Canva mockups, hunting for the right stock photos, and still struggling to make my art look like it truly belonged in a real room. It was draining, and it pulled me away from what I enjoy most: creating.
               </p>
               <p>
-                I knew there had to be a better way. I imagined a tool that was smart, fast, and created realistic mockup visuals so realistic they'd stop customers in their tracks. So, I decided to build it.
+                I knew there had to be a better way. I pictured a tool that was smart, fast, and able to generate realistic mockups that feel natural, polished, and true to life. So I built it.
               </p>
               <p>
-                Wall Art Mockup Engine is the tool I wish I had. It’s built for creators, by a creator, with the simple goal of giving you back your time and helping you sell more of your work.
+                Wall Art Mockup Engine is the tool I wanted all along. Made for creators, by a creator, its goal is simple: give you your time back and help you present your artwork in a way that looks professional and encourages more people to buy.
               </p>
             </div>
 
